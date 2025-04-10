@@ -1,0 +1,40 @@
+{
+<<<<<<< HEAD
+  "name": "oatly-desktop",
+  "version": "1.0.0",
+  "description": "Oatly Desktop Application",
+  "main": "main.js",
+  "type": "module", 
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"cd ../frontend && npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "cd ../frontend && npm run build && cd ../desktop && electron-builder",
+=======
+  "name": "oatside-desktop",
+  "version": "1.0.0",
+  "description": "Oatside Desktop Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "cd ../frontend && npm run build && electron-builder",
+>>>>>>> f485eb430be8cf62f652b458f04d150bf66711f4
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+<<<<<<< HEAD
+    "concurrently": "^8.2.2",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "electron-is-dev": "^3.0.1",
+=======
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+>>>>>>> f485eb430be8cf62f652b458f04d150bf66711f4
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "electron-is-dev": "^3.0.1"
+  }
+}
