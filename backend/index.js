@@ -19,7 +19,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
   },
 });
@@ -27,11 +27,12 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "http://localhost:5174"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
@@ -45,17 +46,16 @@ app.use((req, res, next) => {
   next();
 });
 
-
 io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
   socket.on("trackOrder", (orderId) => {
     console.log("Tracking Order:", orderId);
-    socket.join(orderId); 
+    socket.join(orderId);
   });
   socket.on("disconnect", () => console.log("Client disconnected:", socket.id));
 });
 
-export { io }; 
+export { io };
 
 const startServer = async () => {
   try {
